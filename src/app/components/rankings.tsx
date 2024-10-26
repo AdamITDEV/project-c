@@ -15,7 +15,7 @@ interface RankingsProps {
 }
 
 const Rankings: React.FC<RankingsProps> = ({ rating }) => {
-  const [isMobile, setIsMobile] = useState<boolean>(window.innerWidth <= 768)
+  const [isMobile, setIsMobile] = useState(false)
 
   const handleResize = () => {
     setIsMobile(window.innerWidth <= 768)
@@ -23,14 +23,19 @@ const Rankings: React.FC<RankingsProps> = ({ rating }) => {
 
   useEffect(() => {
     handleResize()
+
     window.addEventListener('resize', handleResize)
 
     return () => window.removeEventListener('resize', handleResize)
   }, [])
 
   return (
-    <div className=" flex justify-around border-4 border-r-white">
-      <div className=" justify-self-start ">
+    <div
+      className={`flex flex-col md:flex-row justify-around border-4 border-r-white ${
+        isMobile ? 'p-20' : 'p-5'
+      }`}
+    >
+      <div className="flex-1">
         <div className="w-full max-w-sm p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-6 dark:bg-gray-800 dark:border-gray-700">
           <h5 className="mb-3 text-base font-semibold text-gray-900 md:text-xl dark:text-white flex justify-center ">
             Top #1 <FaArrowRightLong className="mx-3 mt-1" /> #5
@@ -205,7 +210,7 @@ const Rankings: React.FC<RankingsProps> = ({ rating }) => {
           </div>
         </div>
       </div>
-      <div className="mt-16">
+      <div className="mx-52 ">
         <div className="place-items-center">
           {!isMobile && (
             <p className="text-yellow-300 flex p-5 ">
@@ -227,14 +232,15 @@ const Rankings: React.FC<RankingsProps> = ({ rating }) => {
           )}
         </div>
       </div>
-      <div>
+      <div className="flex-1">
         <div className="w-full max-w-sm p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-6 dark:bg-gray-800 dark:border-gray-700">
           <h5 className="mb-3 text-base font-semibold text-gray-900 md:text-xl dark:text-white flex justify-center ">
             Top #5 <FaArrowRightLong className="mx-3 mt-1" /> #10
           </h5>
 
           <p className="text-sm font-normal text-gray-500 dark:text-gray-400">
-            Member with good performance
+            Ranking based on members contributing the most during the week, members with the most
+            views, trending, and high value.
           </p>
           <ul className="my-4 space-y-3">
             <li>

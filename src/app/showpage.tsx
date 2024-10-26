@@ -41,6 +41,18 @@ const rating = [
     trendingArticles: 'Bread with italian olive oil and rosemary',
     Avatar: '/images/banner3.png',
   },
+  {
+    Id: 4,
+    Name: 'Focaccia',
+    trendingArticles: 'Bread with italian olive oil and rosemary',
+    Avatar: '/images/banner3.png',
+  },
+  {
+    Id: 5,
+    Name: 'Focaccia',
+    trendingArticles: 'Bread with italian olive oil and rosemary',
+    Avatar: '/images/banner3.png',
+  },
 ]
 
 export default function ShowPage() {
