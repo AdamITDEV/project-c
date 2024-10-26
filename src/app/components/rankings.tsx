@@ -207,7 +207,6 @@ const Rankings: React.FC<RankingsProps> = ({ rating }) => {
       </div>
       <div className="mt-16">
         <div className="place-items-center">
-          {' '}
           {!isMobile && (
             <p className="text-yellow-300 flex p-5 ">
               The top 10 winners...
@@ -225,7 +224,7 @@ const Rankings: React.FC<RankingsProps> = ({ rating }) => {
               title="YouTube video player"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             ></iframe>
-          )}{' '}
+          )}
         </div>
       </div>
       <div>

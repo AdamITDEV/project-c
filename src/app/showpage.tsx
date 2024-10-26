@@ -1,3 +1,4 @@
+'use'
 import Carousel from './components/carousel'
 import Rankings from './components/rankings'
 
@@ -30,13 +31,13 @@ const rating = [
   },
   {
     Id: 2,
-    Title: 'Python',
+    Name: 'Python',
     trendingArticles: 'Bread with italian olive oil and rosemary',
     Avatar: '/images/banner2.png',
   },
   {
     Id: 3,
-    Title: 'Focaccia',
+    Name: 'Focaccia',
     trendingArticles: 'Bread with italian olive oil and rosemary',
     Avatar: '/images/banner3.png',
   },

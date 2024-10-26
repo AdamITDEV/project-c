@@ -17,22 +17,22 @@ const Carousel: React.FC<CarouselProps> = ({ slides }) => {
   const [currentIndex, setCurrentIndex] = useState(0)
   const [touchStart, setTouchStart] = useState<number | null>(null)
   const [touchEnd, setTouchEnd] = useState<number | null>(null)
+  const handleNext = useCallback(() => {
+    setCurrentIndex((prevIn) => (prevIn + 1) % slides.length)
+  }, [slides.length])
+
+  const handlePrev = useCallback(() => {
+    setCurrentIndex((prevIn) => (prevIn - 1) % slides.length)
+  }, [slides.length])
 
   useEffect(() => {
     const interval = setInterval(() => {
       handleNext()
+      handlePrev()
     }, 4000)
 
     return () => clearInterval(interval)
-  }, [currentIndex])
-
-  const handleNext = useCallback(() => {
-    setCurrentIndex((prevIndex) => (prevIndex + 1) % slides.length)
-  }, [slides.length])
-
-  const handlePrev = useCallback(() => {
-    setCurrentIndex((prevIndex) => (prevIndex === 0 ? slides.length - 1 : prevIndex - 1))
-  }, [slides.length])
+  }, [handleNext, handlePrev])
 
   const handleTouchStart = (e: React.TouchEvent) => {
     setTouchStart(e.touches[0].clientX)
