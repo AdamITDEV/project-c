@@ -210,7 +210,7 @@ const Rankings: React.FC<RankingsProps> = ({ rating }) => {
           </div>
         </div>
       </div>
-      <div className="mx-52 ">
+      <div className={`mx-52 ${isMobile ? `hidden` : `block`} `}>
         <div className="place-items-center">
           {!isMobile && (
             <p className="text-yellow-300 flex p-5 ">
