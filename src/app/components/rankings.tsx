@@ -15,14 +15,14 @@ interface RankingsProps {
 }
 
 const Rankings: React.FC<RankingsProps> = ({ rating }) => {
-  const [isMobile, setIsMobile] = useState(false)
+  const [isMobile, setIsMobile] = useState<boolean>(window.innerWidth <= 768)
 
   const handleResize = () => {
     setIsMobile(window.innerWidth <= 768)
   }
+
   useEffect(() => {
     handleResize()
-
     window.addEventListener('resize', handleResize)
 
     return () => window.removeEventListener('resize', handleResize)
