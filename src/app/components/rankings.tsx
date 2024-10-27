@@ -57,15 +57,15 @@ const Rankings: React.FC<RankingsProps> = ({ rating }) => {
                     href="#"
                     className="flex items-center p-3 text-base font-bold text-gray-900 rounded-lg bg-gray-50 hover:bg-gray-100 group hover:shadow dark:bg-gray-600 dark:hover:bg-gray-500 dark:text-white"
                   >
-                    <span className="flex ml-1 w-[6rem]">
+                    <div className="w-[10rem] h-[4rem]">
                       <Image
-                        className="flex-nowrap rounded-md"
+                        className="flex-auto rounded-md"
                         src={rating.Avatar}
                         alt={rating.Name}
                         width={64}
                         height={64}
                       />
-                    </span>
+                    </div>
                     <span className="flex-1 ms-3 whitespace-nowrap">{rating.Name}</span>
                     <span className="inline-flex items-center justify-center px-2 py-0.5 ms-3 text-xs font-medium text-gray-500 bg-gray-200 rounded dark:bg-gray-700 dark:text-gray-400">
                       {rating.Label ? ' Master' : ' '}
