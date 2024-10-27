@@ -210,7 +210,29 @@ const Rankings: React.FC<RankingsProps> = ({ rating }) => {
           </div>
         </div>
       </div>
+      <div className={`mx-52 ${isMobile ? `hidden` : `block`} `}>
+        <div className="place-items-center">
+          {!isMobile && (
+            <p className="text-yellow-300 flex p-5 ">
+              The top 10 winners...
+              <GiTrophyCup className="text-yellow-300" />
+            </p>
+          )}
+        </div>
 
+        <div>
+          {!isMobile && (
+            <iframe
+              className={`${isMobile ? `w-[10rem] h-[5rem]` : `w-[40rem] h-[25rem]`}`}
+              width="560"
+              height="315"
+              src="https://www.youtube.com/embed/W2EmxaQkafY?si=0DXv9ScCUkJK0449"
+              title="YouTube video player"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            ></iframe>
+          )}
+        </div>
+      </div>
       <div className="flex-1">
         <div className="w-full max-w-sm p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-6 dark:bg-gray-800 dark:border-gray-700">
           <h5 className="mb-3 text-base font-semibold text-gray-900 md:text-xl dark:text-white flex justify-center ">
@@ -522,26 +544,6 @@ const Rankings: React.FC<RankingsProps> = ({ rating }) => {
           </div>
         </div>
       </div>
-      {!isMobile && (
-        <div className={`mx-52 ${isMobile ? `w-16 md:w-32 lg:w-48 grid` : `block grid`} `}>
-          <div className="place-items-center">
-            <p className="text-yellow-300 flex p-5 ">
-              The top 10 winners...
-              <GiTrophyCup className="text-yellow-300" />
-            </p>
-          </div>
-
-          <div>
-            <iframe
-              width="560"
-              height="315"
-              src="https://www.youtube.com/embed/W2EmxaQkafY?si=0DXv9ScCUkJK0449"
-              title="YouTube video player"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            ></iframe>
-          </div>
-        </div>
-      )}
     </div>
   )
 }
