@@ -35,7 +35,7 @@ const rating = [
     Name: 'Peter',
     trendingArticles: 'Bread with italian olive oil and rosemary',
     Avatar: '/images/avatar2.avif',
-    Label: false,
+    Label: true,
   },
   {
     Id: 3,
