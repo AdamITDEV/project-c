@@ -59,7 +59,7 @@ const Rankings: React.FC<RankingsProps> = ({ rating }) => {
                   >
                     <span className="flex-1 ms-3 whitespace-nowrap">
                       <Image
-                        className="w-[64] h-[64] rounded-md"
+                        className=" rounded-md"
                         src={rating.Avatar}
                         alt={rating.Name}
                         width={64}
