@@ -82,7 +82,7 @@ const Carousel: React.FC<CarouselProps> = ({ slides }) => {
               <h2 className="absolute block bg-black w-28 text-center text-white rounded-md -translate-x-1/2 -translate-y-1/2 mt- top-11 left-1/2">
                 {slide.Title}
               </h2>
-              <p className="absolute block -translate-x-1/2 -translate-y-1/2 mt-20 top-1/2 left-1/2">
+              <p className="absolute subpixel-antialiased text-base block flex-1 bg-clip-text text-transparent bg-gradient-to-r from-pink-500 to-violet-500 -translate-x-1/2 -translate-y-1/2 mt-16 top-1/2 left-1/2">
                 {slide.ingredients}
               </p>
             </div>
