@@ -49,7 +49,7 @@ const Rankings: React.FC<RankingsProps> = ({ rating }) => {
             Ranking based on members contributing the most during the week, members with the most
             views, trending, and high value.
           </p>
-          <ul className="my-4 space-y-3">
+          <ul className="my-4 space-y-5">
             {topRankings.map((rating) => (
               <div key={rating.Id}>
                 <li className="w-full">
@@ -57,7 +57,7 @@ const Rankings: React.FC<RankingsProps> = ({ rating }) => {
                     href="#"
                     className="flex items-center p-3 text-base font-bold text-gray-900 rounded-lg bg-gray-50 hover:bg-gray-100 group hover:shadow dark:bg-gray-600 dark:hover:bg-gray-500 dark:text-white"
                   >
-                    <span className="flex ">
+                    <span className=" ">
                       <Image
                         className={`flex rounded-sm ${isMobile ? 'w-32' : 'w-16'}`}
                         src={rating.Avatar}
@@ -67,7 +67,7 @@ const Rankings: React.FC<RankingsProps> = ({ rating }) => {
                       />
                     </span>
                     <span className="flex-1 ms-3 whitespace-nowrap">{rating.Name}</span>
-                    <span className="inline-flex items-center justify-center px-2 py-0.5 ms-3 text-xs font-medium text-gray-500 bg-gray-200 rounded dark:bg-gray-700 dark:text-gray-400">
+                    <span className="inline-flex  justify-center px-2 py-0.5 ms-3 text-xs font-medium text-gray-500 bg-gray-200 rounded dark:bg-gray-700 dark:text-gray-400">
                       {rating.Label ? ' Master' : ' '}
                     </span>
                   </a>
@@ -131,7 +131,7 @@ const Rankings: React.FC<RankingsProps> = ({ rating }) => {
             Ranking based on members contributing the most during the week, members with the most
             views, trending, and high value.
           </p>
-          <ul className="my-4 space-y-3">
+          <ul className="my-4 space-y-5">
             {otherRankings.map((rating) => (
               <div key={rating.Id}>
                 <li className="w-full">
@@ -139,17 +139,17 @@ const Rankings: React.FC<RankingsProps> = ({ rating }) => {
                     href="#"
                     className="flex items-center p-3 text-base font-bold text-gray-900 rounded-lg bg-gray-50 hover:bg-gray-100 group hover:shadow dark:bg-gray-600 dark:hover:bg-gray-500 dark:text-white"
                   >
-                    <span className="flex">
+                    <span className=" ">
                       <Image
-                        className=" flex-nowrap rounded-md"
+                        className={`flex rounded-sm ${isMobile ? 'w-32' : 'w-16'}`}
                         src={rating.Avatar}
                         alt={rating.Name}
-                        width={64}
-                        height={64}
+                        width={320}
+                        height={120}
                       />
                     </span>
                     <span className="flex-1 ms-3 whitespace-nowrap">{rating.Name}</span>
-                    <span className="inline-flex items-center justify-center px-2 py-0.5 ms-3 text-xs font-medium text-gray-500 bg-gray-200 rounded dark:bg-gray-700 dark:text-gray-400">
+                    <span className="inline-flex  justify-center px-2 py-0.5 ms-3 text-xs font-medium text-gray-500 bg-gray-200 rounded dark:bg-gray-700 dark:text-gray-400">
                       {rating.Label ? ' Master' : ' '}
                     </span>
                   </a>
