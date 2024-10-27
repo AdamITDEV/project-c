@@ -223,7 +223,7 @@ const Rankings: React.FC<RankingsProps> = ({ rating }) => {
         <div>
           {!isMobile && (
             <iframe
-              className={`${isMobile ? `w-[50rem] h-[30rem]` : `w-[50rem] h-[30rem]`}`}
+              className={`${isMobile ? `w-[20rem] h-[15rem]` : `w-[40rem] h-[25rem]`}`}
               src="https://www.youtube.com/embed/W2EmxaQkafY?si=0DXv9ScCUkJK0449"
               title="YouTube video player"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
