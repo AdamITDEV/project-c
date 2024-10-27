@@ -210,18 +210,16 @@ const Rankings: React.FC<RankingsProps> = ({ rating }) => {
           </div>
         </div>
       </div>
-      <div className={`mx-52 ${isMobile ? `hidden` : `block`} `}>
-        <div className="place-items-center">
-          {!isMobile && (
+      {!isMobile && (
+        <div className={`mx-52 ${isMobile ? `hidden` : `block`} `}>
+          <div className="place-items-center">
             <p className="text-yellow-300 flex p-5 ">
               The top 10 winners...
               <GiTrophyCup className="text-yellow-300" />
             </p>
-          )}
-        </div>
+          </div>
 
-        <div>
-          {!isMobile && (
+          <div>
             <iframe
               width="560"
               height="315"
@@ -229,9 +227,9 @@ const Rankings: React.FC<RankingsProps> = ({ rating }) => {
               title="YouTube video player"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             ></iframe>
-          )}
+          </div>
         </div>
-      </div>
+      )}
       <div className="flex-1">
         <div className="w-full max-w-sm p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-6 dark:bg-gray-800 dark:border-gray-700">
           <h5 className="mb-3 text-base font-semibold text-gray-900 md:text-xl dark:text-white flex justify-center ">
