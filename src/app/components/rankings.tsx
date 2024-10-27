@@ -57,9 +57,9 @@ const Rankings: React.FC<RankingsProps> = ({ rating }) => {
                     href="#"
                     className="flex items-center p-3 text-base font-bold text-gray-900 rounded-lg bg-gray-50 hover:bg-gray-100 group hover:shadow dark:bg-gray-600 dark:hover:bg-gray-500 dark:text-white"
                   >
-                    <span className="flex">
+                    <span className="flex ml-1 w-[6rem]">
                       <Image
-                        className=" flex-nowrap rounded-md"
+                        className="flex-nowrap rounded-md"
                         src={rating.Avatar}
                         alt={rating.Name}
                         width={64}
