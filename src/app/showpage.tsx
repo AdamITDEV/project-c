@@ -25,9 +25,9 @@ const slides = [
 const rating = [
   {
     Id: 1,
-    Name: 'Adam Smith',
+    Name: 'AdamSmith',
     trendingArticles: 'Tổng Hợp Thư Viện Tích Hợp',
-    Avatar: '/images/avatar1.jpg',
+    Avatar: '/images/avatar1.avif',
     Label: true,
   },
   {
