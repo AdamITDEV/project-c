@@ -27,8 +27,8 @@ const rating = [
     Id: 1,
     Name: 'Adam',
     trendingArticles: 'Tổng Hợp Thư Viện Tích Hợp',
-    Avatar: '/images/avatar.png',
-    Label: true,
+    Avatar: '/images/avatar2.avif',
+    Label: false,
   },
   {
     Id: 2,
