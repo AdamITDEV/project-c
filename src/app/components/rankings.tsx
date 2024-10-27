@@ -41,7 +41,7 @@ const Rankings: React.FC<RankingsProps> = ({ rating }) => {
       }`}
     >
       <div className="flex-1">
-        <div className="w-full max-w-sm p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-6 dark:bg-gray-800 dark:border-gray-700">
+        <div className="w-full max-w-lg p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-6 dark:bg-gray-800 dark:border-gray-700">
           <h5 className="mb-3 text-base font-semibold text-gray-900 md:text-xl dark:text-white flex justify-center ">
             Top #1 <FaArrowRightLong className="mx-3 mt-1" /> #5
           </h5>
@@ -67,7 +67,7 @@ const Rankings: React.FC<RankingsProps> = ({ rating }) => {
                       />
                     </span>
                     <span className="flex-1 ms-3 whitespace-nowrap">{rating.Name}</span>
-                    <span className="inline-flex  justify-center px-2 py-0.5 ms-3 text-xs font-medium text-gray-500 bg-gray-200 rounded dark:bg-gray-700 dark:text-gray-400">
+                    <span className="inline-flex px-2 py-0.5 ms-1 text-xs font-normal text-gray-500 bg-gray-200 rounded dark:bg-gray-700 dark:text-gray-400">
                       {rating.Label ? ' Master' : ' '}
                     </span>
                   </a>
