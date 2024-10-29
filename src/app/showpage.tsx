@@ -28,22 +28,14 @@ const rating = [
     Name: 'Adam',
     trendingArticles: 'Tổng Hợp Thư Viện Tích Hợp',
     Avatar: '/images/avatar2.avif',
-<<<<<<< HEAD
-    Label: false,
-=======
     Label: true,
->>>>>>> 5a1b86e (save)
   },
   {
     Id: 2,
     Name: 'Peter',
     trendingArticles: 'Bread with italian olive oil and rosemary',
     Avatar: '/images/avatar2.avif',
-<<<<<<< HEAD
-    Label: true,
-=======
     Label: false,
->>>>>>> 5a1b86e (save)
   },
   {
     Id: 3,

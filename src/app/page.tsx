@@ -1,10 +1,5 @@
-<<<<<<< HEAD
-import NavMenu from '../app/components/navmenu'
-import ShowPage from '../app/showpage'
-=======
 import NavMenu from './components/navmenu'
 import ShowPage from './showpage'
->>>>>>> 5a1b86e (save)
 export default function Home() {
   return (
     <div className=" font-[family-name:var(--font-geist-sans)]">

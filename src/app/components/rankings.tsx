@@ -3,10 +3,7 @@ import { useEffect, useState } from 'react'
 import { FaArrowRightLong } from 'react-icons/fa6'
 import { GiTrophyCup } from 'react-icons/gi'
 import Image from 'next/image'
-<<<<<<< HEAD
-=======
 import Link from 'next/link'
->>>>>>> 5a1b86e (save)
 
 interface rank {
   Id: number
@@ -57,13 +54,8 @@ const Rankings: React.FC<RankingsProps> = ({ rating }) => {
             {topRankings.map((rating) => (
               <div key={rating.Id}>
                 <li className="w-full">
-<<<<<<< HEAD
-                  <a
-                    href="#"
-=======
                   <Link
                     href={'/Pages'}
->>>>>>> 5a1b86e (save)
                     className="flex items-center p-3 text-base font-bold text-gray-900 rounded-lg bg-gray-50 hover:bg-gray-100 group hover:shadow dark:bg-gray-600 dark:hover:bg-gray-500 dark:text-white"
                   >
                     <span className=" ">
@@ -80,11 +72,7 @@ const Rankings: React.FC<RankingsProps> = ({ rating }) => {
                     <span className="px-1 py-0.5 ms-2 text-xs font-medium text-gray-500 bg-gray-200 rounded dark:bg-gray-700 dark:text-gray-400">
                       {rating.Label ? ' Master' : ' '}
                     </span>
-<<<<<<< HEAD
-                  </a>
-=======
                   </Link>
->>>>>>> 5a1b86e (save)
                 </li>
               </div>
             ))}
