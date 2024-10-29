@@ -245,7 +245,11 @@ function Banners() {
         </div>
         <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
           <p className="text-sm leading-6 text-gray-900">
+<<<<<<< HEAD
             <strong className="font-semibold">GeneriCon 2023</strong>
+=======
+            <strong className="font-semibold">Happy New Year 2024</strong>
+>>>>>>> 5a1b86e (save)
             <svg
               viewBox="0 0 2 2"
               aria-hidden="true"
@@ -253,7 +257,11 @@ function Banners() {
             >
               <circle r={1} cx={1} cy={1} />
             </svg>
+<<<<<<< HEAD
             Join us in Denver from June 7 – 9 to see what’s coming next.
+=======
+            Join us in IT DEV LIBRARY see what&apos;s coming next.
+>>>>>>> 5a1b86e (save)
           </p>
           <a
             href="#"
