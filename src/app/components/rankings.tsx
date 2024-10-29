@@ -74,10 +74,7 @@ const Rankings: React.FC<RankingsProps> = ({ rating }) => {
                         width={320}
                         height={120}
                       />
-<<<<<<< HEAD
-=======
                       hello
->>>>>>> 5a1b86e (save)
                     </span>
                     <span className="flex-1 ms-3 whitespace-nowrap">{rating.Name}</span>
                     <span className="px-1 py-0.5 ms-2 text-xs font-medium text-gray-500 bg-gray-200 rounded dark:bg-gray-700 dark:text-gray-400">
