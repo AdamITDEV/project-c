@@ -9,12 +9,23 @@ const RegisterPage: React.FC = () => {
   const router = useRouter()
   const ref = useRef<HTMLFormElement>(null)
   const handleSubmit = async (formData: FormData) => {
+    const email = formData.get('email') as string | null
+    const password = formData.get('password') as string | null
+    const name = formData.get('name') as string | null
+
+    if (!email || !password || !name) {
+      setError('All fields are required.')
+      return
+    }
+
     const r = await register({
-      email: formData.get('email'),
-      password: formData.get('password'),
-      name: formData.get('name'),
+      email,
+      password,
+      name,
     })
+
     ref.current?.reset()
+
     if (r?.error) {
       setError(r.error)
       return
@@ -22,6 +33,7 @@ const RegisterPage: React.FC = () => {
       return router.push('/pages/login/')
     }
   }
+
   return (
     <div className="min-h-screen bg-gray-100 text-gray-900 flex justify-center">
       <div className="max-w-screen-xl m-0 sm:m-10 bg-white shadow sm:rounded-lg flex justify-center flex-1">
