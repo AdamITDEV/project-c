@@ -6,7 +6,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 
 interface rank {
-  Id: number
+  Id_rating: number
   Name: string
   trendingArticles: string
   Avatar: string
@@ -32,8 +32,8 @@ const Rankings: React.FC<RankingsProps> = ({ rating }) => {
     return () => window.removeEventListener('resize', handleResize)
   }, [])
 
-  const topRankings = rating.filter((rank) => rank.Id >= 1 && rank.Id <= 5)
-  const otherRankings = rating.filter((rank) => rank.Id >= 6 && rank.Id <= 10)
+  const topRankings = rating.filter((rank) => rank.Id_rating >= 1 && rank.Id_rating <= 5)
+  const otherRankings = rating.filter((rank) => rank.Id_rating >= 6 && rank.Id_rating <= 10)
 
   return (
     <div
@@ -52,10 +52,10 @@ const Rankings: React.FC<RankingsProps> = ({ rating }) => {
           </p>
           <ul className="my-4 space-y-5">
             {topRankings.map((rating) => (
-              <div key={rating.Id}>
+              <div key={rating.Id_rating}>
                 <li className="w-full">
                   <Link
-                    href={'/Pages'}
+                    href={`/pages/details/${rating.Id_rating}`}
                     className="flex items-center p-3 text-base font-bold text-gray-900 rounded-lg bg-gray-50 hover:bg-gray-100 group hover:shadow dark:bg-gray-600 dark:hover:bg-gray-500 dark:text-white"
                   >
                     <span className=" ">
@@ -66,7 +66,6 @@ const Rankings: React.FC<RankingsProps> = ({ rating }) => {
                         width={320}
                         height={120}
                       />
-                      hello
                     </span>
                     <span className="flex-1 ms-3 whitespace-nowrap">{rating.Name}</span>
                     <span className="px-1 py-0.5 ms-2 text-xs font-medium text-gray-500 bg-gray-200 rounded dark:bg-gray-700 dark:text-gray-400">
@@ -124,7 +123,7 @@ const Rankings: React.FC<RankingsProps> = ({ rating }) => {
         </div>
       </div>
       <div className="flex-1">
-        <div className="w-full max-w-sm p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-6 dark:bg-gray-800 dark:border-gray-700">
+        <div className="w-full max-w-lg p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-6 dark:bg-gray-800 dark:border-gray-700">
           <h5 className="mb-3 text-base font-semibold text-gray-900 md:text-xl dark:text-white flex justify-center ">
             Top #5 <FaArrowRightLong className="mx-3 mt-1" /> #10
           </h5>
@@ -135,10 +134,10 @@ const Rankings: React.FC<RankingsProps> = ({ rating }) => {
           </p>
           <ul className="my-4 space-y-5">
             {otherRankings.map((rating) => (
-              <div key={rating.Id}>
+              <div key={rating.Id_rating}>
                 <li className="w-full">
-                  <a
-                    href="#"
+                  <Link
+                    href={`/pages/details/${rating.Id_rating}`}
                     className="flex items-center p-3 text-base font-bold text-gray-900 rounded-lg bg-gray-50 hover:bg-gray-100 group hover:shadow dark:bg-gray-600 dark:hover:bg-gray-500 dark:text-white"
                   >
                     <span className=" ">
@@ -151,10 +150,10 @@ const Rankings: React.FC<RankingsProps> = ({ rating }) => {
                       />
                     </span>
                     <span className="flex-1 ms-3 whitespace-nowrap">{rating.Name}</span>
-                    <span className="inline-flex  justify-center px-2 py-0.5 ms-3 text-xs font-medium text-gray-500 bg-gray-200 rounded dark:bg-gray-700 dark:text-gray-400">
+                    <span className="px-1 py-0.5 ms-2 text-xs font-medium text-gray-500 bg-gray-200 rounded dark:bg-gray-700 dark:text-gray-400">
                       {rating.Label ? ' Master' : ' '}
                     </span>
-                  </a>
+                  </Link>
                 </li>
               </div>
             ))}

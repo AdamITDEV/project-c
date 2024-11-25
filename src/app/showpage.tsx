@@ -1,110 +1,38 @@
-'use'
-import Carousel from './components/carousel'
-import Rankings from './components/rankings'
-
-const slides = [
-  {
-    Id: 1,
-    Title: 'React JS',
-    ingredients: 'Tổng Hợp Thư Viện Tích Hợp',
-    photoName: '/images/banner1.png',
-  },
-  {
-    Id: 2,
-    Title: 'Python',
-    ingredients: 'Bread with italian olive oil and rosemary',
-    photoName: '/images/banner2.png',
-  },
-  {
-    Id: 3,
-    Title: 'Focaccia',
-    ingredients: 'Bread with italian olive oil and rosemary',
-    photoName: '/images/banner3.png',
-  },
-]
-const rating = [
-  {
-    Id: 1,
-    Name: 'Adam',
-    trendingArticles: 'Tổng Hợp Thư Viện Tích Hợp',
-    Avatar: '/images/avatar2.avif',
-    Label: true,
-  },
-  {
-    Id: 2,
-    Name: 'Peter',
-    trendingArticles: 'Bread with italian olive oil and rosemary',
-    Avatar: '/images/avatar2.avif',
-    Label: false,
-  },
-  {
-    Id: 3,
-    Name: 'Focaccia',
-    trendingArticles: 'Bread with italian olive oil and rosemary',
-    Avatar: '/images/avatar3.avif',
-    Label: false,
-  },
-  {
-    Id: 4,
-    Name: 'Focaccia',
-    trendingArticles: 'Bread with italian olive oil and rosemary',
-    Avatar: '/images/avatar4.avif',
-    Label: false,
-  },
-  {
-    Id: 5,
-    Name: 'Focaccia',
-    trendingArticles: 'Bread with italian olive oil and rosemary',
-    Avatar: '/images/avatar4.avif',
-    Label: false,
-  },
-
-  {
-    Id: 6,
-    Name: 'Focaccia',
-    trendingArticles: 'Bread with italian olive oil and rosemary',
-    Avatar: '/images/avatar4.avif',
-    Label: false,
-  },
-  {
-    Id: 7,
-    Name: 'Focaccia',
-    trendingArticles: 'Bread with italian olive oil and rosemary',
-    Avatar: '/images/avatar4.avif',
-    Label: false,
-  },
-  {
-    Id: 8,
-    Name: 'Focaccia',
-    trendingArticles: 'Bread with italian olive oil and rosemary',
-    Avatar: '/images/avatar4.avif',
-    Label: false,
-  },
-  {
-    Id: 9,
-    Name: 'Focaccia',
-    trendingArticles: 'Bread with italian olive oil and rosemary',
-    Avatar: '/images/avatar4.avif',
-    Label: false,
-  },
-  {
-    Id: 10,
-    Name: 'Focaccia',
-    trendingArticles: 'Bread with italian olive oil and rosemary',
-    Avatar: '/images/avatar4.avif',
-    Label: false,
-  },
-]
-
+'use client'
+import Carousel from './_components/carousel'
+import Rankings from './_components/rankings'
+import { slides, userStorage } from '../../_constants/data'
+import { rating } from '../../_constants/data'
+import { Item, Propose } from './_components/propose'
+import { useEffect, useState } from 'react'
 export default function ShowPage() {
+  const [recommendedItems, setRecommendedItems] = useState<Item[]>([])
+
+  const fetchRecommendedItems = () => {
+    const data = userStorage.filter((item) => Number(item.Viewer) > 4)
+    setRecommendedItems(data)
+  }
+
+  useEffect(() => {
+    fetchRecommendedItems()
+  }, [])
+
+  const handleSlideChange = (index: number) => {
+    if (index === 0 || index === userStorage.length - 1) {
+      console.log('Reached first or last item, reloading data...')
+      fetchRecommendedItems()
+    }
+  }
+
   return (
     <div className="items-center">
       <Carousel slides={slides} />
-      <div className="  relative w-full text-center top-10 border-double border-4 border-[#111827]">
+      <div className="relative w-full text-center top-10 border-double border-4 border-[#111827]">
         Accredited library collection
       </div>
-      <div className="relative w-full  top-16">
+      <div className="relative w-full top-16">
         <Rankings rating={rating} />
+        <Propose recommendedItems={recommendedItems} onSlideChange={handleSlideChange} />
       </div>
     </div>
   )
