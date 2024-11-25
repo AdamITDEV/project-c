@@ -81,7 +81,12 @@ export default function TopMenu() {
           <nav className="bg-white border-gray-200 dark:bg-gray-900">
             <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
               <a href="#" className="flex items-center space-x-3 rtl:space-x-reverse">
-                <Image src="/images/Logo_Index.png" width={50} height={50} alt="Flowbite Logo" />
+                <Image
+                  src="/assets/images/logo-index.png"
+                  width={50}
+                  height={50}
+                  alt="Flowbite Logo"
+                />
                 <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">
                   IT DEV Library
                 </span>
@@ -107,7 +112,7 @@ export default function TopMenu() {
                   <span className="sr-only">Open user menu</span>
                   <Image
                     className="w-8 h-8 rounded-full "
-                    src="/images/avatar.png"
+                    src="/assets/images/avatar.png"
                     width={100}
                     height={100}
                     alt="Flowbite Logo"
