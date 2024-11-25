@@ -35,7 +35,7 @@ export const navmenu = [
   {
     Id: 2,
     Name: 'App',
-    Url: ' ',
+
     Item1: 'For Android',
     UrlItem1: '',
     Item2: 'For Ios',

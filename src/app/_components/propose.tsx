@@ -39,7 +39,7 @@ export const Propose: React.FC<ProposeProps> = ({ recommendedItems, onSlideChang
 
   // Icons corresponding to the categories
   const categoryIcons = {
-    'For you': '/new.svg',
+    'For you': '/first-new.svg',
     Followed: '/followed-icon.svg', // Change these to the actual icon paths
     'You Might Like': '/like-icon.svg',
     Suggestion: '/user-tick.svg',
