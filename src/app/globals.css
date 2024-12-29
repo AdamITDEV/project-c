@@ -46,4 +46,22 @@ body {
 .loader div:nth-child(3) {
   animation-delay: 0.6s;
 }
+
 /*end loading css*/
+.hoverEffect {
+  display: inline-block; /* Đảm bảo phần tử hoạt động đúng */
+  transition: transform 0.2s ease; /* Hiệu ứng mượt */
+}
+
+.hoverEffect:active {
+  transform: scale(0.95); /* Zoom out khi nhấn */
+}
+
+.noSelect {
+  user-select: none; /* Ngăn bôi đen */
+  -webkit-user-select: none; /* Ngăn bôi đen trên Chrome/Safari */
+  -moz-user-select: none; /* Ngăn bôi đen trên Firefox */
+  -ms-user-select: none; /* Ngăn bôi đen trên IE/Edge */
+  -webkit-user-drag: none; /* Ngăn kéo hình ảnh */
+  -webkit-touch-callout: none; /* Ngăn menu trên thiết bị cảm ứng */
+}

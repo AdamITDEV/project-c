@@ -1,16 +1,15 @@
-import { useState } from 'react'
+'use client'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import 'swiper/swiper-bundle.css'
-import { Pagination } from 'swiper/modules'
+import { Pagination, Navigation } from 'swiper/modules'
 import 'swiper/css'
 import 'swiper/css/pagination'
-import { Navigation } from 'swiper/modules'
 import 'swiper/css/navigation'
 import Image from 'next/image'
+import { useRouter } from 'next/navigation'
 
-// Define Item interface
 export interface Item {
-  Id_Storage: number
+  _id: string
   Label: string
   Image: string
   Title: string
@@ -21,154 +20,95 @@ export interface Item {
   Id_User: number
 }
 
-// Props for the component
 interface ProposeProps {
   recommendedItems: Item[] // All recommended items
   onSlideChange: (index: number) => void
 }
 
-// Main component
 export const Propose: React.FC<ProposeProps> = ({ recommendedItems, onSlideChange }) => {
-  // State to track the selected category
-  const [selectedCategory, setSelectedCategory] = useState('For you') // Default category
-
-  // Handle category change
-  const handleCategoryChange = (category: string) => {
-    setSelectedCategory(category) // Update selected category
+  const categories = ['For you', 'Followed', 'You Might Like', 'Suggestion'] as const
+  type Category = (typeof categories)[number] // 'For you' | 'Followed' | 'You Might Like' | 'Suggestion'
+  const truncateContent = (content: string, maxLength: number) => {
+    if (content.length <= maxLength) return content
+    return content.substring(0, maxLength) + '...'
   }
-
-  // Icons corresponding to the categories
-  const categoryIcons = {
+  const categoryIcons: Record<Category, string> = {
     'For you': '/first-new.svg',
-    Followed: '/followed-icon.svg', // Change these to the actual icon paths
+    Followed: '/followed-icon.svg',
     'You Might Like': '/like-icon.svg',
     Suggestion: '/user-tick.svg',
   }
+  const router = useRouter()
+  const handleClickArticle = (Id_blog: string) => {
+    // Redirect to ArticleDetail page with Id_blog as a URL parameter
+    router.push(`/pages/details/blog/${Id_blog}`)
+  }
 
   return (
-    <div className="flex justify-center mt-8 relative rounded-2xl  ">
-      <div className="w-[1080px] relative  shadow-lg rounded-2xl ">
-        {/* Conditionally render the Swiper for 'For you' */}
-        {selectedCategory === 'For you' && (
-          <Swiper
-            direction="vertical"
-            pagination={{ clickable: true }}
-            spaceBetween={20}
-            slidesPerView={1}
-            className="h-[580px] z-10"
-            modules={[Pagination]}
-            onSlideChange={(swiper) => onSlideChange(swiper.realIndex)}
-          >
-            {recommendedItems.map((item, index) => (
-              <SwiperSlide key={index}>
-                <div className="bg-indigo-50 dark:bg-gray-900 h-full flex justify-center items-center shadow-lg  ">
-                  <span className="text-3xl font-semibold text-indigo-600">{item.Title}</span>
-                </div>
-              </SwiperSlide>
-            ))}
-          </Swiper>
-        )}
-
-        {/* Conditionally render the Swiper for 'Followed' */}
-        {selectedCategory === 'Followed' && (
-          <Swiper
-            direction="vertical"
-            pagination={{ clickable: true }}
-            spaceBetween={20}
-            slidesPerView={1}
-            className="h-[580px] z-10"
-            modules={[Pagination]}
-            onSlideChange={(swiper) => onSlideChange(swiper.realIndex)}
-          >
-            {recommendedItems.map((item, index) => (
-              <SwiperSlide key={index}>
-                <div className="bg-green-50 dark:bg-gray-900 rounded-2xl h-full flex justify-center items-center">
-                  <span className="text-3xl font-semibold text-green-600">{item.Title}</span>
-                </div>
-              </SwiperSlide>
-            ))}
-          </Swiper>
-        )}
-
-        {/* Conditionally render the Swiper for 'You Might Like' */}
-        {selectedCategory === 'You Might Like' && (
-          <Swiper
-            direction="vertical"
-            pagination={{ clickable: true }}
-            spaceBetween={20}
-            slidesPerView={1}
-            className="h-[580px] z-10"
-            modules={[Pagination]}
-            onSlideChange={(swiper) => onSlideChange(swiper.realIndex)}
-          >
-            {recommendedItems.map((item, index) => (
-              <SwiperSlide key={index}>
-                <div className="bg-blue-50 dark:bg-gray-900 rounded-2xl h-full flex justify-center items-center">
-                  <span className="text-3xl font-semibold text-blue-600">{item.Title}</span>
-                </div>
-              </SwiperSlide>
-            ))}
-          </Swiper>
-        )}
-
-        {/* Conditionally render the Swiper for 'Suggestion On Request' */}
-        {selectedCategory === 'Suggestion' && (
-          <Swiper
-            direction="vertical"
-            pagination={{ clickable: true }}
-            spaceBetween={20}
-            slidesPerView={1}
-            className="h-[580px] z-10"
-            modules={[Pagination]}
-            onSlideChange={(swiper) => onSlideChange(swiper.realIndex)}
-          >
-            {recommendedItems.map((item, index) => (
-              <SwiperSlide key={index}>
-                <div className="bg-yellow-50 dark:bg-gray-900 rounded-2xl h-full flex justify-center items-center">
-                  <span className="text-3xl font-semibold text-yellow-600">{item.Title}</span>
-                </div>
-              </SwiperSlide>
-            ))}
-          </Swiper>
-        )}
-
-        {/* Horizontal Swiper overlay */}
-        <div className="absolute top-0 left-0 w-full z-20 pointer-events-none">
-          <Swiper
-            spaceBetween={10}
-            slidesPerView={3}
-            className="h-[50px] bg-white dark:bg-black  shadow-lg"
-            modules={[Navigation]}
-          >
-            {[
-              { Label: 'For you', Icon: categoryIcons['For you'] },
-              { Label: 'Followed', Icon: categoryIcons['Followed'] },
-              { Label: 'You Might Like', Icon: categoryIcons['You Might Like'] },
-              { Label: 'Suggestion', Icon: categoryIcons['Suggestion'] },
-            ].map((item, index) => (
-              <SwiperSlide
-                key={index}
-                className="pointer-events-auto"
-                onClick={() => {
-                  handleCategoryChange(item.Label) // Change the selected category
-                  onSlideChange(index) // Optionally synchronize slide change
-                }}
-              >
-                <div className="bg-white dark:bg-slate-950 border rounded-md h-full flex justify-center items-center cursor-pointer">
-                  <span className="text-lg font-medium text-red-500">
-                    <Image
-                      className="dark:bg-white rounded-[12px] border-[1px]"
-                      src={item.Icon}
-                      width={40}
-                      height={40}
-                      alt={item.Label}
-                    />
+    <div className="flex justify-center mt-8 relative rounded-2xl">
+      <div className="w-[1080px] relative shadow-lg rounded-2xl">
+        {/* Horizontal Swiper for switching categories */}
+        <Swiper
+          direction="horizontal"
+          spaceBetween={10}
+          slidesPerView={1}
+          className="h-[580px] bg-white dark:bg-black shadow-lg"
+          modules={[Pagination, Navigation]}
+          onSlideChange={(swiper) => onSlideChange(swiper.activeIndex)}
+        >
+          {categories.map((category, catIndex) => (
+            <SwiperSlide key={catIndex}>
+              <div className="h-full">
+                <div className="h-[50px] flex items-center justify-center bg-white  dark:bg-slate-950 shadow-md border-b">
+                  <Image
+                    src={categoryIcons[category]}
+                    width={40}
+                    height={40}
+                    alt={category}
+                    className="mr-2 rounded-md dark:bg-purple-400"
+                  />
+                  <span className="text-lg font-semibold text-gray-700 dark:text-white">
+                    {category}
                   </span>
                 </div>
-              </SwiperSlide>
-            ))}
-          </Swiper>
-        </div>
+                {/* Vertical Swiper inside each category */}
+                <Swiper
+                  direction="vertical"
+                  pagination={{ clickable: true }}
+                  spaceBetween={20}
+                  slidesPerView={1}
+                  className="h-[530px]"
+                  modules={[Pagination]}
+                  onSlideChange={(swiper) => onSlideChange(swiper.realIndex)}
+                >
+                  {recommendedItems.map((item, index) => (
+                    <SwiperSlide key={index}>
+                      <div
+                        onClick={() => handleClickArticle(item._id)}
+                        className={`h-full pt-[50px]  justify-center items-center rounded-lg shadow-md ${
+                          category === 'For you'
+                            ? 'bg-indigo-50 text-indigo-600 '
+                            : category === 'Followed'
+                            ? 'bg-green-50 text-green-600'
+                            : category === 'You Might Like'
+                            ? 'bg-blue-50 text-blue-600'
+                            : 'bg-yellow-50 text-yellow-600'
+                        }`}
+                      >
+                        <div className="  grid text-center">
+                          <span className="text-2xl font-semibold">{item.Title}</span>
+                          <span className="text-xl mt-[50px] text-gray-600 dark:text-gray-900">
+                            {truncateContent(item.Content, 1000)} {/* 100 là số ký tự giới hạn */}
+                          </span>
+                        </div>
+                      </div>
+                    </SwiperSlide>
+                  ))}
+                </Swiper>
+              </div>
+            </SwiperSlide>
+          ))}
+        </Swiper>
       </div>
     </div>
   )

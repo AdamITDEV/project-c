@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import { useRef, useState } from 'react'
 import { register } from '../../../../actions/register'
+
 const RegisterPage: React.FC = () => {
   const [error, setError] = useState<string>()
   const router = useRouter()

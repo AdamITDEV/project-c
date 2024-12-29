@@ -179,6 +179,7 @@ export const userStorage = [
     Id_Storage: 1,
     Label: 'Tutorial',
     Image: '',
+    status: false,
     Title: '1Basic CSS Module',
     Content:
       '1Static websites are now used to bootstrap lots of websites and are becoming the basis for a variety of tools that even influence both web designers and developers influence both web designers and developers.',

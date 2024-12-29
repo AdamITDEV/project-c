@@ -7,7 +7,8 @@ import { XMarkIcon } from '@heroicons/react/20/solid'
 import { FaMoon } from 'react-icons/fa'
 import { BsSunFill } from 'react-icons/bs'
 import { navmenu } from '../../../_constants/data'
-import { signOut } from 'next-auth/react'
+import { signOut, useSession } from 'next-auth/react'
+import Link from 'next/link'
 
 export default function TopMenu() {
   const [isClient, setIsClient] = useState(false)
@@ -15,6 +16,7 @@ export default function TopMenu() {
   const [isOpenAvatar, setIsOpenAvatar] = useState(false)
   const [darkMode, setDarkMode] = useState(false)
   const [userSession, setUserSession] = useState({ name: ' ', email: '' })
+  const { data: session } = useSession()
   useEffect(() => {
     const fetchSession = async () => {
       try {
@@ -120,7 +122,7 @@ export default function TopMenu() {
                 </button>
 
                 <div
-                  className={`absolute right-28 mt-80 w-48 origin-top-right bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 dark:divide-gray-600 ${
+                  className={`z-40 absolute right-28 mt-80 w-48 origin-top-right bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 dark:divide-gray-600 ${
                     isOpenAvatar ? 'block' : 'hidden '
                   }`}
                   id="user-dropdown"
@@ -147,24 +149,24 @@ export default function TopMenu() {
                     </span>
                   </div>
 
-                  {userSession.name && userSession.name !== 'Unknown User' ? (
+                  {userSession.name && userSession.name !== 'Unknown User' && session?.user?.id ? (
                     <ul className="py-2 " aria-labelledby="user-menu-button">
                       <li>
-                        <a
-                          href="#"
+                        <Link
+                          href={`/pages/dashboard/${session?.user.id}`}
                           className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
                         >
                           Dashboard
-                        </a>
+                        </Link>
                       </li>
 
                       <li>
-                        <a
-                          href="#"
+                        <Link
+                          href={`/pages/profile/${session?.user.id}`}
                           className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
                         >
-                          Settings
-                        </a>
+                          My Profile
+                        </Link>
                       </li>
                       <li>
                         <a

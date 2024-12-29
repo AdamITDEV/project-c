@@ -5,12 +5,19 @@ import { slides, userStorage } from '../../_constants/data'
 import { rating } from '../../_constants/data'
 import { Item, Propose } from './_components/propose'
 import { useEffect, useState } from 'react'
+import Popup from './store/Popup'
+import { useDispatch } from 'react-redux'
+import { showPopup } from './store/store'
 export default function ShowPage() {
   const [recommendedItems, setRecommendedItems] = useState<Item[]>([])
 
-  const fetchRecommendedItems = () => {
-    const data = userStorage.filter((item) => Number(item.Viewer) > 4)
-    setRecommendedItems(data)
+  const fetchRecommendedItems = async () => {
+    const response = await fetch('/api/getRecommendedItems')
+    const data = await response.json()
+
+    if (data.recommendedItems) {
+      setRecommendedItems(data.recommendedItems)
+    }
   }
 
   useEffect(() => {
@@ -23,9 +30,15 @@ export default function ShowPage() {
       fetchRecommendedItems()
     }
   }
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    dispatch(showPopup())
+  }, [dispatch])
 
   return (
     <div className="items-center">
+      <Popup />
       <Carousel slides={slides} />
       <div className="relative w-full text-center top-10 border-double border-4 border-[#111827]">
         Accredited library collection
